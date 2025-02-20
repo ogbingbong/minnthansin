@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center; /* Centers #main horizontally */
+    align-items: center; /* Centers #main vertically */
+    height: 100vh; /* Full height of the viewport */
+    margin: 0; /* Remove default margin */
+    background-color: #f2f4f7; /* Optional background */
+}
+
+#main {
+    width: 50%;
+    max-width: 400px; /* Prevents it from becoming too large on big screens */
+    background-color: white; /* Optional: makes it stand out */
+    padding: 20px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center; /* Centers text and inline elements inside */
+}
+
+#main input {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 10px; /* Adds spacing between inputs */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#main button {
+    border: none;
+    width: 100%;
+    padding: 10px;
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+#main button[type="submit"] {
+    background-color: #135dbe;
+    color: white;
+}

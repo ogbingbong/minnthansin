@@ -1,0 +1,76 @@
+body {
+    background-color: #f2f4f7;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+    height: 100vh;
+    margin: 0;
+    padding: 20px; /* Prevents layout issues on small screens */
+}
+
+#maindiv {
+    background-color: #ffffff;
+    width: 90%; /* Adjusts to screen size */
+    max-width: 400px; /* Limits size on larger screens */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1), 0px 8px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center;
+    padding: 20px;
+}
+
+#maindiv img {
+    width: 80px; /* Fixed size for consistency */
+    border-radius: 50%;
+}
+
+#maindiv a {
+    color: #135dbe
+}
+
+#loginform {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#loginform input {
+    border-radius: 6px;
+    font-size: 17px;
+    padding: 14px 16px;
+    width: 100%; /* Full width inside container */
+    max-width: 300px; /* Limits size */
+    border: 1px solid black;
+    margin-bottom: 10px;
+    box-sizing: border-box; /* Prevents width issues */
+}
+
+#loginform button {
+    background-color: #166fe5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 100%;
+    max-width: 332px;
+    cursor: pointer;
+}
+
+#loginform button:hover {
+    background-color: #135dbe;
+}
+
+/* Small screens (phones) */
+@media (max-width: 480px) {
+    #maindiv {
+        width: 95%;
+        padding: 15px;
+    }
+
+    #loginform input, 
+    #loginform button {
+        width: 100%;
+    }
+}
