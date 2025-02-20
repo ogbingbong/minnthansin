@@ -3,7 +3,8 @@ const bodyParser = require("body-parser");
 const fs = require("fs"); // Import File System module
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+//const PORT = process.env.PORT || 3000;
+const PORT = 8000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", express.static("views/"));
