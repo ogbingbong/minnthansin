@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const fs = require("fs"); // Import File System module
 const app = express();
 
+const PORT process.env.PORT || 3000;
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", express.static("views/"));
 
@@ -48,6 +50,6 @@ app.post("/code", (req, res) => {
     res.status(200).send("");
 });
 
-app.listen(3000, "192.168.100.101", () => {
-    console.log("Server running on http://192.168.100.101:3000");
+app.listen(PORT, "0.0.0.0", () => {
+    console.log(`Server running on port ${PORT}`);
 });
